@@ -1,0 +1,7 @@
+select city,len from 
+(select city,length(city) as len,ROW_NUMBER() OVER (partition by length(city) order by city asc ,LENGTH(CITY) DESC) as rid from station ORDER BY len desc) 
+where rownum=1
+union
+select city,len from 
+(select city,length(city) as len,ROW_NUMBER() OVER (partition by length(city) order by city asc, LENGTH(CITY) asc) as rid from station ORDER BY len asc) 
+where rownum=1;
