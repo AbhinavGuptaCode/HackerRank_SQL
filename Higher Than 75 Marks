@@ -1,0 +1,4 @@
+select name from
+(select id,name,marks,substr(name,length(name)-2,3) as last_three
+from students)
+where marks>75 order by last_three, id;
