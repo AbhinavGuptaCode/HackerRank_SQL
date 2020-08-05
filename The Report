@@ -1,0 +1,6 @@
+select (case when grd<8 then 'NULL' else nm end) as name,grd,mrks from
+(select a.name as nm,b.grade as grd,a.marks as mrks from
+(select id,name,marks,(case when marks/10=10 then 9 else floor(marks/10) end) as marks_grade from students) a
+inner join
+(select grade,min_mark/10 as min_marks from grades) b
+on a.marks_grade=b.min_marks) order by grd desc ,name,mrks;
