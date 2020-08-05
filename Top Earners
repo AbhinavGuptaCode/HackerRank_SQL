@@ -1,0 +1,5 @@
+select * from 
+(select earnings,count(earnings) from
+(select employee_id,(salary*months) as earnings from employee order by earnings desc)
+ group by earnings order by earnings desc )
+ where rownum=1;
