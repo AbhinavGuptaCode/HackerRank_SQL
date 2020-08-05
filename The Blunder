@@ -1,0 +1,2 @@
+select ceil(avg(salary)-avg(miscalcuated_salary)) from 
+(select id,name,salary,replace(salary,0,'') as miscalcuated_salary from employees);
