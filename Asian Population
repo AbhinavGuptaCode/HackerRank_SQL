@@ -1,0 +1,5 @@
+select sum(a.population) from 
+(select * from city) a
+inner join
+(select * from country where continent='Asia') b 
+on a.countrycode=b.code;
